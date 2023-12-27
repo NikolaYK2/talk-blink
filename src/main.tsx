@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
-import {BrowserRouter, createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Login} from "@/faetures/auth/ui/Login.tsx";
+import '@/assets/styles/index.scss'
 
 
 const router = createBrowserRouter([
@@ -13,9 +13,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
     <React.StrictMode>
       <RouterProvider router={router}/>
     </React.StrictMode>,
-  </BrowserRouter>
 )
