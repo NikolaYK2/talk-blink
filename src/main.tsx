@@ -1,13 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, createBrowserRouter, RouterProvider} from "react-router-dom";
+import {Login} from "@/faetures/auth/ui/Login.tsx";
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Login/>
+  }
+])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <React.StrictMode>
-      <App/>
+      <RouterProvider router={router}/>
     </React.StrictMode>,
   </BrowserRouter>
 )
