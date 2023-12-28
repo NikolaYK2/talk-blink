@@ -1,3 +1,11 @@
 .primary {
+  padding: 8px 16px;
+  background: var(--color-dark-500);
+  border-radius: 5px;
+  color: var(--color-light-300);
+  font-size: var(--f-s-15);
+}
 
+.fullWidth {
+  width: 100%;
 }

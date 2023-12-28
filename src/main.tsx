@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Login} from "@/faetures/auth/ui/Login.tsx";
+import {Login} from "@/faetures/auth/ui/login/Login.tsx";
 import '@/assets/styles/index.scss'
 
 
