@@ -1,5 +1,12 @@
 import {IconSvg} from "@/common/components/img/IconSvg.tsx";
 import s from './Login.module.scss'
+import {Auth} from "@/faetures/auth/ui/Auth.tsx";
+
+
+const netwoks = [
+  {id: '1', name: 'google', title: 'Sign In with Google'},
+  {id: '2', name: 'facebook', title: 'Sign In with Facebook'},
+]
 
 export const Login = () => {
   return (
@@ -14,17 +21,17 @@ export const Login = () => {
       </div>
 
       <div className={s.blockItem}>
-        <h2>Welcome to Talk Blink!</h2>
+        <h2>Welcome Back!</h2>
+
+        <Auth/>
+
         <div>
-          <div>
-            <IconSvg name={"google"}/>
-            <span>Sign In with Google</span>
-          </div>
-          <div>
-            <IconSvg name={"facebook"}/>
-            <span>Sign In with Facebook</span>
-          </div>
+          {netwoks.map(el => <div key={el.id}>
+            <IconSvg name={el.name}/>
+            <span>{el.title}</span>
+          </div>)}
         </div>
+
       </div>
 
       <div className={s.background2}>

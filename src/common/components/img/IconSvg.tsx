@@ -3,6 +3,7 @@ type Props = {
     | 'google'
     | 'logo'
     | 'facebook'
+    | string
     | ''
 }
 export const IconSvg = ({name}: Props) => {
