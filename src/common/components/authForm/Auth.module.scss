@@ -1,0 +1,106 @@
+@import "../../../assets/styles/mixins";
+
+.container {
+  flex: 0 0 auto;
+  width: 40%;
+  margin: auto;
+  background: var(--color-light-300);
+  color: var(--color-dark-900);
+  z-index: 2;
+  background: transparent;
+  @media (max-width: 850px) {
+    width: 70%;
+  }
+
+  > h2 {
+    text-align: center;
+    font-size: var(--f-s-26);
+    font-weight: var(--f-w900);
+    margin: 0 0 10.18% 0;
+  }
+
+}
+
+.form {
+
+  .span {
+    color: var(--color-dark-100);
+    font-size: clamp(var(--f-s-12), 5vw, var(--f-s-15));
+  }
+
+  .mod {
+    text-decoration: line-through;
+  }
+
+  .input {
+    width: 100%;
+    margin: 3px 0 3%;
+    border-top: 1px solid var(--color-dark-100);
+    border-bottom: 2px solid var(--color-dark-900);
+    @include fontSize(var(--f-s-12), var(--f-s-15));
+
+    input {
+      width: 100%;
+      padding: 8px 0 3px;
+      background: transparent;
+      color: var(--color-medium-500);
+
+    }
+  }
+}
+
+
+.linkSpan {
+  margin: 5.642% 0 0;
+  //text-align: center;
+  @include fontSize(var(--f-s-12), var(--f-s-15));
+  border-bottom: 1px solid var(--color-dark-100);
+
+  > span {
+    display: block;
+    margin: 0 0 3px;
+  }
+}
+
+
+.blockLink {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px;
+
+  .link {
+    flex: 0 1 50%;
+    height: 32px;
+  }
+
+  .modDefault {
+    background: transparent;
+    border-bottom: 2px solid var(--color-dark-900);
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    cursor: pointer;
+  }
+}
+
+.blockSwitch {
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  @include fontSize(var(--f-s-12), var(--f-s-15));
+
+
+  > span {
+    padding:  0 0 3px;
+    border-bottom: 1px solid var(--color-dark-100);
+  }
+
+  .mo {
+    display: block;
+    background: transparent;
+    border-bottom: 2px solid var(--color-dark-900);
+    padding: 8px 0 3px;
+    color: var(--color-medium-500);
+  }
+}

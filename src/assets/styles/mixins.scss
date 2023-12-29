@@ -1,0 +1,3 @@
+@mixin fontSize($before, $after) {
+  font-size: clamp($before, 5vw, $after)
+}

@@ -1,5 +1,5 @@
 import {IconSvg} from "@/common/components/img/IconSvg.tsx";
-import {AuthForm} from "@/faetures/auth/ui/login/authForm/AuthForm.tsx";
+import {Outlet} from 'react-router-dom'
 import s from './Login.module.scss'
 
 
@@ -21,7 +21,8 @@ export const Login = () => {
       </div>
 
       <div className={s.blockItem}>
-        <AuthForm auth={"register"} title={'Register Account'}/>
+        <Outlet/>
+        {/*<AuthForm auth={"register"} title={'Register Account'}/>*/}
       </div>
 
 
