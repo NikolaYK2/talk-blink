@@ -66,7 +66,12 @@ export const AuthForm = ({auth, title}: Props) => {
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
 
         {fields.map((field) => <label>
-            <span className={`${s.span} ${watch(field.name) && s.mod}`}>{field.label}</span>
+
+            <div className={s.blockFieldInfo}>
+              <span className={`${s.span} ${watch(field.name) && s.mod}`}>{field.label}</span>
+              <p className={s.errors}>{`: ${errors[field.name]?.message || ''}`}</p>
+            </div>
+
             <div className={s.input}>
               <input type={field.type}
                      {...register(field.name, {
@@ -74,7 +79,6 @@ export const AuthForm = ({auth, title}: Props) => {
                        ...field.setting
                      })}/>
             </div>
-            <p className={s.errors}>{errors[field.name]?.message}</p>
           </label>
         )}
 
