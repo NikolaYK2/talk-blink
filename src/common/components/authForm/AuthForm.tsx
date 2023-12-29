@@ -1,22 +1,21 @@
 import {BtnPolymorphic} from "@/common/components/btn/BtnPolymorphic.tsx";
-import {IconSvg} from "@/common/components/img/IconSvg.tsx";
 import s from './Auth.module.scss'
 import {SubmitHandler, useForm} from "react-hook-form";
-import {NavLink} from "react-router-dom";
-import {fnValidPas, minLength, pattern, textFill} from "@/common/components/authForm/validateErrors.ts";
+import {
+  fnValidPas,
+  minLength,
+  pattern,
+  SettingAuthType,
+  textFill
+} from "@/common/components/authForm/validateErrors.ts";
+import {BlockLink} from "@/common/components/authForm/blockLink/BlockLink.tsx";
 
-
-const netwoks = [
-  {id: '1', name: 'google'},
-  {id: '2', name: 'facebook'},
-]
 
 type FieldType = {
   label: string
   type: string
   name: 'email' | 'username' | 'password' | 'passwordRepeat',
-  setting?: any,
-
+  setting?: SettingAuthType,
 }
 
 type Type = {
@@ -38,7 +37,6 @@ export const AuthForm = ({auth, title}: Props) => {
   ];
 
 
-  const verification = auth === 'logIn';
 
   const {register, handleSubmit, watch, formState: {errors}} = useForm({
     defaultValues: {
@@ -69,7 +67,7 @@ export const AuthForm = ({auth, title}: Props) => {
 
             <div className={s.blockFieldInfo}>
               <span className={`${s.span} ${watch(field.name) && s.mod}`}>{field.label}</span>
-              <p className={s.errors}>{`: ${errors[field.name]?.message || ''}`}</p>
+              <p className={s.errors}>{`${errors[field.name]?.message || ''}`}</p>
             </div>
 
             <div className={s.input}>
@@ -90,24 +88,7 @@ export const AuthForm = ({auth, title}: Props) => {
         <BtnPolymorphic fullWidth>Register</BtnPolymorphic>
       </form>
 
-      <div className={s.linkSpan}>
-        <span>Sign up using</span>
-      </div>
-
-      <div className={s.blockLink}>
-        {netwoks.map(el => <div key={el.id} className={s.link}>
-          <BtnPolymorphic as={'a'} className={s.modDefault}><IconSvg name={el.name}/></BtnPolymorphic>
-        </div>)}
-      </div>
-
-      <div className={s.blockSwitch}>
-        <span>{verification ? 'Don\'t have an account ?' : 'Already have an account ?'}</span>
-        <BtnPolymorphic as={NavLink}
-                        className={s.mo}
-                        to={verification ? '/register' : '/login'}
-                        variant={"link"}>{verification ? 'Register' : 'Login'}
-        </BtnPolymorphic>
-      </div>
+      <BlockLink auth={auth}/>
 
     </div>
   );
