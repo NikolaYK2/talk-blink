@@ -3,6 +3,7 @@ import {IconSvg} from "@/common/components/img/IconSvg.tsx";
 import s from './Auth.module.scss'
 import {SubmitHandler, useForm} from "react-hook-form";
 import {NavLink} from "react-router-dom";
+import {fnValidPas, minLength, pattern, textFill} from "@/common/components/authForm/validateErrors.ts";
 
 
 const netwoks = [
@@ -13,7 +14,9 @@ const netwoks = [
 type FieldType = {
   label: string
   type: string
-  name: 'email' | 'username' | 'password' | 'passwordRepeat'
+  name: 'email' | 'username' | 'password' | 'passwordRepeat',
+  setting?: any,
+
 }
 
 type Type = {
@@ -31,17 +34,13 @@ export const AuthForm = ({auth, title}: Props) => {
 
   const fields: FieldType[] = [
     {label: 'Username', type: 'text', name: 'username'},
-    {label: 'Password', type: 'password', name: 'password'},
+    {label: 'Password', type: 'password', name: 'password', setting: minLength},
   ];
 
-  if (auth === 'register') {
-    fields.unshift({label: 'Email', type: 'email', name: 'email'});
-    fields.push({label: 'Password repeat', type: 'password', name: 'passwordRepeat'});
-  }
 
   const verification = auth === 'logIn';
 
-  const {register, handleSubmit, watch} = useForm({
+  const {register, handleSubmit, watch, formState: {errors}} = useForm({
     defaultValues: {
       email: '',
       username: '',
@@ -54,6 +53,12 @@ export const AuthForm = ({auth, title}: Props) => {
 
   }
 
+  if (auth === 'register') {
+    fields.unshift({label: 'Email', type: 'email', name: 'email', setting: pattern});
+    fields.push({label: 'Password repeat', type: 'password', name: 'passwordRepeat', setting: fnValidPas(watch)});
+  }
+
+
   return (
     <div className={s.container}>
       <h2>{title}</h2>
@@ -62,13 +67,20 @@ export const AuthForm = ({auth, title}: Props) => {
 
         {fields.map((field) => <label>
             <span className={`${s.span} ${watch(field.name) && s.mod}`}>{field.label}</span>
-            <div className={s.input}><input type={field.type} {...register(field.name)}/></div>
+            <div className={s.input}>
+              <input type={field.type}
+                     {...register(field.name, {
+                       required: textFill,
+                       ...field.setting
+                     })}/>
+            </div>
+            <p className={s.errors}>{errors[field.name]?.message}</p>
           </label>
         )}
 
         {auth === 'logIn' &&
-            <label>
-                <div><input type="checkbox"/><span>Remember me</span></div>
+            <label className={s.checkBox}>
+                <input type="checkbox"/><span>Remember me</span>
             </label>}
 
         <BtnPolymorphic fullWidth>Register</BtnPolymorphic>
