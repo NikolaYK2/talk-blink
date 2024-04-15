@@ -6,7 +6,7 @@ export const LongPuling = () => {
 
   return (
     <div className={s.containerLongPuling}>
-      <input type={'text'} {...props}/>
+      <textarea {...props}/>
       <button>add</button>
     </div>
   );
