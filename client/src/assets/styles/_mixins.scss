@@ -1,0 +1,14 @@
+@mixin scrollBar ($w, $borderRadius, $border, $bc, $colorBorder){
+  &::-webkit-scrollbar{
+    width: $w;
+  }
+  &::-webkit-scrollbar-track {
+    width: $w;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $bc;
+    border-radius: $borderRadius;
+    border: $border solid $colorBorder;
+    cursor: pointer;
+  }
+}

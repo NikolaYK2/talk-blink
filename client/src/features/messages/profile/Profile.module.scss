@@ -1,5 +1,5 @@
-.containerProfile{
+.containerProfile {
   width: 100%;
-  height: pxToRem(90px);
+  padding: var(--p-block);
   border-bottom: 1px solid var(--color-dark-300);
 }
