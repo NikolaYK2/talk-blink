@@ -8,8 +8,10 @@
   background-color: var(--color-dark-300);
 
   .logo {
+    display: block;
     width: pxToRem(30px);
     height: pxToRem(30px);
+    margin: 15% 0;
 
     > svg path, circle, {
       stroke: var(--color-medium);
