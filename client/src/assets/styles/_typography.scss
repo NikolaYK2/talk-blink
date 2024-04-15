@@ -1,0 +1,5 @@
+:root {
+  --f-s-h1: clamp(var(--f-s-h2), 5vw, 1.5rem);
+  --f-s-h2: clamp(var(--f-s-little), 5vw, 1.1428rem);
+  --f-s-little: 1rem;
+}
