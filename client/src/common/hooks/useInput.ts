@@ -12,5 +12,5 @@ export const useInput = (initialization: string) => {
     setValue(e.currentTarget.value);
   }
 
-  return {value, onChange}
+  return {value, onChange, setValue}
 };
