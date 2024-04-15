@@ -20,7 +20,7 @@ body {
   height: 100%;
   //font-family: var(--font-family-primary), sans-serif;
   font-size: 100%;
-  font-size: 14px;
+  font-size: var(--f-s-default);
   line-height: 1;
   color: var(--color-light);
   text-size-adjust: 100%;

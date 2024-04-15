@@ -1,7 +1,9 @@
 export const LongPuling = () => {
   return (
-    <div>
-      
-    </div>
+    <section>
+      <div>
+
+      </div>
+    </section>
   );
 };
