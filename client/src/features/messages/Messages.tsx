@@ -5,11 +5,12 @@ import {Screen} from "@/features/messages/screen/Screen.tsx";
 import {useState} from "react";
 
 export type Message = {
+  id: string,
   data: Date,
   message: string,
 }
 export const Messages = () => {
-  const [messages, setMessages] = useState<Message[]>([{data: new Date(), message: 'hi'}]);
+  const [messages, setMessages] = useState<Message[]>([{id: '', data: new Date(), message: 'hi'}]);
 
   return (
     <section className={s.containerMessages}>

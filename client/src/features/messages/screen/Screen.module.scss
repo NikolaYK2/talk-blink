@@ -15,6 +15,7 @@
     margin: 0 0 3.36% auto;
 
     .item {
+      word-break: break-all;
       font-size: var(--f-s-h2);
       color: var(--color-light);
     }
