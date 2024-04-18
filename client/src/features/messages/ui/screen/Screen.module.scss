@@ -13,16 +13,23 @@
     background-color: var(--color-dark-500);
     padding: var(--p-input);
     margin: 0 0 3.36% auto;
+    border-radius: 8px 8px 0 8px ;
 
     .item {
       word-break: break-all;
       font-size: var(--f-s-h2);
       color: var(--color-light);
     }
+    .user {
+      color: red;
+    }
 
     .data {
-      font-size: var(--f-s-default);
+      font-size: var(--f-s-small);
       color: var(--color-dark-100);
+      margin: 4.2% 0 0;
     }
   }
+
+
 }

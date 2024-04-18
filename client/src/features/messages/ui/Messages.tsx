@@ -1,16 +1,17 @@
 import s from './Messages.module.scss'
-import {LongPuling} from "@/features/messages/longPuling/LongPuling.tsx";
-import {Profile} from "@/features/messages/profile/Profile.tsx";
-import {Screen} from "@/features/messages/screen/Screen.tsx";
 import {useState} from "react";
+import {Profile} from "@/features/messages/ui/profile/Profile.tsx";
+import {LongPuling} from './longPuling/LongPuling';
+import {Screen} from "@/features/messages/ui/screen/Screen.tsx";
 
 export type Message = {
-  id: string,
+  id: number,
   data: Date,
   message: string,
+  isUser:boolean,
 }
 export const Messages = () => {
-  const [messages, setMessages] = useState<Message[]>([{id: '', data: new Date(), message: 'hi'}]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   return (
     <section className={s.containerMessages}>
