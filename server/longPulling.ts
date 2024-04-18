@@ -18,7 +18,6 @@ app.use(express.json());
 app.get('/get-messages', (req, res) => {
   //Уведомление что пользователь смс отправил
   emitter.once('newMessages', (message) => {
-    console.log(message)
     res.json(message);
   })
 })

@@ -1,8 +1,8 @@
 import s from './Messages.module.scss'
 import {useState} from "react";
 import {Profile} from "@/features/messages/ui/profile/Profile.tsx";
-import {LongPuling} from './longPuling/LongPuling';
 import {Screen} from "@/features/messages/ui/screen/Screen.tsx";
+import {EventSourcing} from "@/features/messages/ui/eventSourse/ui/EventSourcing.tsx";
 
 export type Message = {
   id: number,
@@ -17,7 +17,7 @@ export const Messages = () => {
     <section className={s.containerMessages}>
       <Profile/>
       <Screen messages={messages}/>
-      <LongPuling messages={messages} setMessages={setMessages}/>
+      <EventSourcing messages={messages} setMessages={setMessages}/>
     </section>
   );
 };

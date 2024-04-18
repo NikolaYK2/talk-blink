@@ -1,41 +1,37 @@
-import s from './LongPuling.module.scss'
 import {useInput} from "@/common/hooks/useInput.ts";
 import {IconSvg} from "@/common/components/IconSVG.tsx";
 import {Message} from "@/features/messages/ui/Messages.tsx";
-import {longPulingApi} from "@/features/messages/api/longPulingApi.ts";
 import {useEffect} from "react";
 import {v1} from "uuid";
+import {BASE_URL} from "@/common/instance/instance.ts";
+import s from './EventSourse.module.scss'
+import {eventSourceApi} from "@/features/messages/ui/eventSourse/api/eventSourceApi.ts";
 
 type Props = {
   messages: Message[],
   setMessages: (messages: any) => void
 }
-export const LongPuling = ({setMessages}: Props) => {
+export const EventSourcing = ({setMessages}: Props) => {
   const {setValue, value, onChange} = useInput('')
   const hasValue = value !== '';
+
   const addMessageHandler = async () => {
-
     if (hasValue) {
-      await longPulingApi.addMessage({id: v1(), message: value, isUser: true});
+      await eventSourceApi.addMessage({id: v1(), message: value, isUser: true});
     }
   }
 
-  //подписываемся на получение сообщений
   const subscribe = async () => {
-    try {
-      const res = await longPulingApi.getMessage();
-      const data = new Date();
+    const eventSource = new EventSource(BASE_URL + 'connect');
 
-      setMessages((prevMessages: Message[]) => [...prevMessages, {data, ...res.data, isUser: false}]);
-      setValue('')
-      //отправляем запрос и ждем сообщения
-      await subscribe();
-    } catch (e) {
-      setTimeout(() => {
-        subscribe();
-      }, 500)
+    eventSource.onmessage = function (event){//есть слушатели для перехватов ошибок сообщений и так далее
+      const message = JSON.parse(event.data);
+      const date = new Date();
+      setMessages((prevMessages: Message[]) => [...prevMessages, {date, ...message, isUser: false}]);
+      setValue('');
     }
   }
+
   useEffect(() => {
     subscribe().catch(e => console.error(e));
   }, []);
@@ -48,3 +44,5 @@ export const LongPuling = ({setMessages}: Props) => {
     </div>
   );
 };
+
+

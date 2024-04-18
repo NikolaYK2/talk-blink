@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon eventsourse.ts"
+    "start": "nodemon eventSource.ts"
   },
   "keywords": [],
   "author": "",

@@ -5,6 +5,7 @@ type Props = {
   messages: Message[]
 }
 export const Screen = ({messages}: Props) => {
+  console.log(messages);
 
   return (
     <div className={s.containerScreen}>
@@ -13,7 +14,7 @@ export const Screen = ({messages}: Props) => {
           {message.message}
         </div>
         <div className={s.data}>
-          {message.data.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          {message.data ? message.data.toLocaleTimeString() : ''}
         </div>
       </div>)}
     </div>
