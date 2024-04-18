@@ -8,7 +8,7 @@ const wss = new ws.Server({
 type MessageType = {
   event: 'message' | 'connection',
   message: string,
-  id: number,
+  id: string,
   data: string,
   username: string
 }
