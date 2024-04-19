@@ -57,14 +57,14 @@ export const Websocket = ({setMessages}: Props) => {
         username: user,
         id: v1(),
         data: time,
-        message: 'Welcome to the meeting!',
+        message: '',
         isUser: false
       }
       socket.current?.send(JSON.stringify(message))
     }
     socket.current.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      setMessages((prevMessages: MessageType[]) => [{...message, isUser: message.username === user}, ...prevMessages,]);
+      setMessages((prevMessages: MessageType[]) => [...prevMessages, {...message, isUser: message.username === user},]);
     }
     socket.current.onclose = () => {
       console.log('close')

@@ -8,19 +8,27 @@ export const Screen = ({messages}: Props) => {
 
   return (
     <div className={s.containerScreen}>
-      {messages.map((message) => <div key={message.id} className={`${s.message} ${!message.isUser && s.userMessage} `}>
-        <div className={`${s.item}`}>
-          {message.message}
-        </div>
-        <div className={s.data}>
-          {message.data}
-        </div>
-        <div>
-          {message.event === 'connection'
-            ? <div>user {message.username} connected</div>
-            : <div>{message.username}</div>
-          }
-        </div>
+      {messages.map((message) => <div key={message.id} className={`${s.blockItem}`}>
+
+        {message.event === 'connection'
+
+          ? <div className={s.connected}>user <span>{message.username}</span> connected</div>
+
+          : <div className={`${s.blockUser} ${!message.isUser && s.blockMessageUser}`}>
+
+            <div className={`${s.blockMessage}`}>
+              <div className={`${s.message}`}>
+                {message.message}
+              </div>
+              <div className={s.data}>
+                {message.data}
+              </div>
+            </div>
+
+            <div className={s.name}>{message.username}</div>
+          </div>
+        }
+
       </div>)}
     </div>
   );

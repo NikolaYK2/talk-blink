@@ -9,29 +9,67 @@
   overflow-y: auto;
   @include scrollBar(5px, 12px, 2px, var(--color-dark-100), var(--color-dark-100));
 
-  .message {
-    background-color: var(--color-dark-500);
-    padding: var(--p-input);
-    margin: 0 0 3.36% auto;
-    border-radius: 8px 8px 0 8px ;
+  .blockItem {
+    width: 100%;
 
-    .item {
-      word-break: break-all;
-      font-size: var(--f-s-h2);
-      color: var(--color-light);
+    .blockUser {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      margin: 0 0 1%;
+
+      .blockMessage {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-dark-500);
+        padding: var(--p-input);
+        border-radius: 8px 8px 0 8px;
+        margin: 0 0 1%;
+
+        .message {
+          word-break: break-all;
+          font-size: var(--f-s-h2);
+          color: var(--color-light);
+          margin: 0 0 10%;
+        }
+
+        .data {
+          font-size: var(--f-s-small);
+          color: var(--color-dark-100);
+          margin: 4.2% 0 0;
+        }
+      }
+
+      .name {
+        font-size: var(--f-s-small);
+        color: var(--color-dark-100);
+      }
     }
 
+    .blockMessageUser {
+      align-items: start;
 
-    .data {
+      .blockMessage {
+        border-radius: 8px 8px 8px 0;
+        background-color: var(--color-medium);
+      }
+    }
+
+    .connected {
+      display: flex;
+      justify-content: center;
+      margin: 0 0 1%;
+      width: 100%;
       font-size: var(--f-s-small);
       color: var(--color-dark-100);
-      margin: 4.2% 0 0;
+
+      > span {
+        color: var(--color-medium-active);
+        margin: 0 5px;
+        text-transform: uppercase;
+      }
     }
   }
-  .userMessage {
-    margin: 0 auto 3.36% 0;
-  }
-
 
 
 }
