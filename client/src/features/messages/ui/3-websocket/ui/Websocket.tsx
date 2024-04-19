@@ -28,11 +28,9 @@ export const Websocket = ({setMessages}: Props) => {
 
   const socket = useRef<WebSocket | null>(null);
 
-  const hasValue = value !== '';
 
   const addMessageHandler = async () => {
 
-    if (hasValue) {
       const message: MessageType = {
         username: user,
         message: value,
@@ -43,7 +41,7 @@ export const Websocket = ({setMessages}: Props) => {
       }
       socket.current?.send(JSON.stringify(message));
       setValue('')
-    }
+
   }
 
   const connectHandler = () => {
