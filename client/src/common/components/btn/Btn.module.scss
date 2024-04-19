@@ -3,12 +3,14 @@
 }
 
 .primary {
-  display: inline-block;
   padding: 5px;
   background-color: var(--color-medium);
   border-radius: var(--b-block);
   box-shadow: transparent;
   transition: background-color .3s ease-in-out 0s;
+  color: var(--color-light);
+  font-size: var(--f-s-h2);
+  text-transform: uppercase;
 
   &:hover {
     background-color: var(--color-medium-active);
