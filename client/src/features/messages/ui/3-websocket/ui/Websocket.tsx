@@ -4,6 +4,7 @@ import {v1} from "uuid";
 import {BASE_URL} from "@/common/instance/instance.ts";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
 import {Auth} from "@/features/messages/ui/3-websocket/ui/auth/ui/Auth.tsx";
+import {useProfile} from "@/features/messages/ui/profile/lib/useProfile.ts";
 
 export type MessageType = {
   event: 'message' | 'connection',
@@ -28,19 +29,20 @@ export const Websocket = ({setMessages}: Props) => {
 
   const socket = useRef<WebSocket | null>(null);
 
+  const {setProfile} = useProfile();
 
   const addMessageHandler = async () => {
 
-      const message: MessageType = {
-        username: user,
-        message: value,
-        id: v1(),
-        event: 'message',
-        data: time,
-        isUser: false
-      }
-      socket.current?.send(JSON.stringify(message));
-      setValue('')
+    const message: MessageType = {
+      username: user,
+      message: value,
+      id: v1(),
+      event: 'message',
+      data: time,
+      isUser: false
+    }
+    socket.current?.send(JSON.stringify(message));
+    setValue('')
 
   }
 
@@ -63,6 +65,7 @@ export const Websocket = ({setMessages}: Props) => {
     socket.current.onmessage = (event) => {
       const message = JSON.parse(event.data);
       setMessages((prevMessages: MessageType[]) => [...prevMessages, {...message, isUser: message.username === user},]);
+      setProfile({data: message.data, username: message.username})
     }
     socket.current.onclose = () => {
       console.log('close')
