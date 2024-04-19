@@ -1,0 +1,10 @@
+.containerUserHub {
+  flex: 1 1 100%;
+  max-width: pxToRem(365px);
+  min-width: pxToRem(365px);
+  background: var(--color-dark-500);
+  @media (max-width: pxToRem($viewportMobile)) {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
