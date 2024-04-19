@@ -1,13 +1,13 @@
 import s from './LongPuling.module.scss'
 import {useInput} from "@/common/hooks/useInput.ts";
 import {IconSvg} from "@/common/components/IconSVG.tsx";
-import {Message} from "@/features/messages/ui/Messages.tsx";
 import {useEffect} from "react";
 import {v1} from "uuid";
-import {longPulingApi} from "@/features/messages/ui/longPuling/api/longPulingApi.ts";
+import {longPulingApi} from "@/features/messages/ui/1-longPuling/api/longPulingApi.ts";
+import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
 
 type Props = {
-  messages: Message[],
+  messages: MessageType[],
   setMessages: (messages: any) => void
 }
 export const LongPuling = ({setMessages}: Props) => {
@@ -26,7 +26,7 @@ export const LongPuling = ({setMessages}: Props) => {
       const res = await longPulingApi.getMessage();
       const data = new Date();
 
-      setMessages((prevMessages: Message[]) => [...prevMessages, {data, ...res.data, isUser: false}]);
+      setMessages((prevMessages: MessageType[]) => [...prevMessages, {data, ...res.data, isUser: false}]);
       setValue('')
       //отправляем запрос и ждем сообщения
       await subscribe();

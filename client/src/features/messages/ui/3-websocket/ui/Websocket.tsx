@@ -1,9 +1,8 @@
 import {useInput} from "@/common/hooks/useInput.ts";
-import {IconSvg} from "@/common/components/IconSVG.tsx";
 import {useRef, useState} from "react";
 import {v1} from "uuid";
-import s from './Websocket.module.scss'
 import {BASE_URL} from "@/common/instance/instance.ts";
+import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
 
 export type MessageType = {
   event: 'message' | 'connection',
@@ -21,12 +20,12 @@ type Props = {
   setMessages: (messages: any) => void,
 }
 export const Websocket = ({setMessages}: Props) => {
+  const [connected, setConnected] = useState(false);
+
   const {setValue, value, onChange} = useInput('');
   const {value: user, onChange: onChangeUser} = useInput('');
 
   const socket = useRef<WebSocket | null>(null);
-
-  const [connected, setConnected] = useState(false);
 
   const hasValue = value !== '';
 
@@ -47,7 +46,7 @@ export const Websocket = ({setMessages}: Props) => {
   }
 
   const connectHandler = () => {
-    socket.current = new WebSocket(`ws${BASE_URL}`);
+    socket.current = new WebSocket(`ws://${BASE_URL}`);
 
     socket.current.onopen = () => {
       setConnected(true);
@@ -83,12 +82,9 @@ export const Websocket = ({setMessages}: Props) => {
       </div>
     </div>
   }
+
   return (
-    <div className={s.containerLongPuling}>
-      <textarea className={s.input} value={value} onChange={onChange}/>
-      <button className={`${s.btn}`} onClick={addMessageHandler}><IconSvg name={"addMessage"}/>
-      </button>
-    </div>
+    <ChatInput value={value} onChange={onChange} callback={addMessageHandler}/>
   );
 };
 
