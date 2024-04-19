@@ -1,14 +1,13 @@
 import {useInput} from "@/common/hooks/useInput.ts";
-import {IconSvg} from "@/common/components/IconSVG.tsx";
-import {Message} from "@/features/messages/ui/Messages.tsx";
 import {useEffect} from "react";
 import {v1} from "uuid";
 import {BASE_URL} from "@/common/instance/instance.ts";
-import s from './EventSourse.module.scss'
-import {eventSourceApi} from "@/features/messages/ui/eventSourse/api/eventSourceApi.ts";
+import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
+import {eventSourceApi} from "@/features/messages/ui/2-eventSource/api/eventSourceApi.ts";
+import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
 
 type Props = {
-  messages: Message[],
+  messages: MessageType[],
   setMessages: (messages: any) => void
 }
 export const EventSourcing = ({setMessages}: Props) => {
@@ -24,10 +23,10 @@ export const EventSourcing = ({setMessages}: Props) => {
   const subscribe = async () => {
     const eventSource = new EventSource(BASE_URL + 'connect');
 
-    eventSource.onmessage = function (event){//есть слушатели для перехватов ошибок сообщений и так далее
+    eventSource.onmessage = function (event) {//есть слушатели для перехватов ошибок сообщений и так далее
       const message = JSON.parse(event.data);
       const date = new Date();
-      setMessages((prevMessages: Message[]) => [...prevMessages, {date, ...message, isUser: false}]);
+      setMessages((prevMessages: MessageType[]) => [...prevMessages, {date, ...message, isUser: false}]);
       setValue('');
     }
   }
@@ -37,11 +36,7 @@ export const EventSourcing = ({setMessages}: Props) => {
   }, []);
 
   return (
-    <div className={s.containerLongPuling}>
-      <textarea className={s.input} value={value} onChange={onChange}/>
-      <button className={`${s.btn}`} onClick={addMessageHandler}><IconSvg name={"addMessage"}/>
-      </button>
-    </div>
+    <ChatInput value={value} onChange={onChange} callback={addMessageHandler}/>
   );
 };
 

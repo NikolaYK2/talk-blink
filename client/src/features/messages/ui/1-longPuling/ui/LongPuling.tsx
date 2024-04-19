@@ -1,10 +1,9 @@
-import s from './LongPuling.module.scss'
 import {useInput} from "@/common/hooks/useInput.ts";
-import {IconSvg} from "@/common/components/IconSVG.tsx";
 import {useEffect} from "react";
 import {v1} from "uuid";
 import {longPulingApi} from "@/features/messages/ui/1-longPuling/api/longPulingApi.ts";
 import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
+import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
 
 type Props = {
   messages: MessageType[],
@@ -41,10 +40,6 @@ export const LongPuling = ({setMessages}: Props) => {
   }, []);
 
   return (
-    <div className={s.containerLongPuling}>
-      <textarea className={s.input} value={value} onChange={onChange}/>
-      <button className={`${s.btn}`} onClick={addMessageHandler}><IconSvg name={"addMessage"}/>
-      </button>
-    </div>
+    <ChatInput value={value} onChange={onChange} callback={addMessageHandler}/>
   );
 };
