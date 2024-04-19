@@ -1,9 +1,9 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import '@/assets/styles/index.scss'
 import {PATH} from "@/common/constants/conts.ts";
 import App from "@/App.tsx";
+import {ProfileProvider} from "@/features/messages/ui/profile/model/ProfileProvider.tsx";
 
 
 const router = createBrowserRouter([
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  <ProfileProvider>
     <RouterProvider router={router}/>
-  </React.StrictMode>,
+  </ProfileProvider>,
 )

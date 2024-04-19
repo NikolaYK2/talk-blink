@@ -1,8 +1,8 @@
 import s from './Messages.module.scss'
 import {useState} from "react";
-import {Profile} from "@/features/messages/ui/profile/Profile.tsx";
 import {Screen} from "@/features/messages/ui/screen/Screen.tsx";
 import {MessageType, Websocket} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
+import {Profile} from "@/features/messages/ui/profile/ui/Profile.tsx";
 
 
 export const Messages = () => {

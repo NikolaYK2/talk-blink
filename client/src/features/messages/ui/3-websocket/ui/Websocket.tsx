@@ -70,7 +70,6 @@ export const Websocket = ({setMessages}: Props) => {
     socket.current.onerror = () => {
       console.log('error!!!')
     }
-
   }
 
   if (!connected) return <Auth user={user} onChange={onChangeUser} onCLick={connectHandler}/>
