@@ -1,3 +1,3 @@
 export const checkFill = (value: string) => {
-  return value !== '';
+  return value.trim() !== '';
 }
