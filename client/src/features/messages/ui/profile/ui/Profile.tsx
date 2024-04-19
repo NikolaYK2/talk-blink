@@ -10,6 +10,7 @@ export const Profile = () => {
           <IconSvg name={'ava'}/>
         </div>
         <div className={s.name}>Nikolay</div>
+        <div className={s.online}></div>
       </div>
     </div>
   );
