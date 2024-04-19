@@ -17,16 +17,16 @@ export const Header = () => {
         <IconSvg name={"logo"}/>
       </Link>
       <nav className={s.nav}>
-        {routes.map((route) =>
-          <ul className={s.blockRout}>
+        <ul className={s.blockRout}>
+          {routes.map((route) =>
             <li className={s.rout}>
-              <NavLink to={route.link}>
+              <NavLink to={route.link} className={({isActive}) => isActive ? s.isActive : ''}>
                 <IconSvg name={route.name}/>
               </NavLink>
-
             </li>
-          </ul>
-        )}
+          )}
+        </ul>
+
       </nav>
     </header>
   );
