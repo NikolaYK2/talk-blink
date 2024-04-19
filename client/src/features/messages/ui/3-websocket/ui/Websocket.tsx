@@ -3,6 +3,7 @@ import {useRef, useState} from "react";
 import {v1} from "uuid";
 import {BASE_URL} from "@/common/instance/instance.ts";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
+import {Auth} from "@/features/messages/ui/3-websocket/ui/auth/ui/Auth.tsx";
 
 export type MessageType = {
   event: 'message' | 'connection',
@@ -74,14 +75,7 @@ export const Websocket = ({setMessages}: Props) => {
 
   }
 
-  if (!connected) {
-    return <div>
-      <div>
-        <input type="text" value={user} onChange={onChangeUser}/>
-        <button onClick={connectHandler}>sign in</button>
-      </div>
-    </div>
-  }
+  if (!connected) return <Auth user={user} onChange={onChangeUser} onCLick={connectHandler}/>
 
   return (
     <ChatInput value={value} onChange={onChange} callback={addMessageHandler}/>

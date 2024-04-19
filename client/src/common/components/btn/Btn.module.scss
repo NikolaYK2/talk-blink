@@ -1,0 +1,25 @@
+* button {
+  margin: 0 auto;
+}
+
+.primary {
+  display: inline-block;
+  padding: 5px;
+  background-color: var(--color-medium);
+  border-radius: var(--b-block);
+  box-shadow: transparent;
+  transition: background-color .3s ease-in-out 0s;
+
+  &:hover {
+    background-color: var(--color-medium-active);
+    transition: background-color .3s ease-in-out 0s;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px var(--color-dark-100);
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}

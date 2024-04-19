@@ -13,7 +13,6 @@ export const Messages = () => {
       <Profile/>
       <Screen  messages={messages}/>
       <Websocket  messages={messages} setMessages={setMessages}/>
-      {/*<EventSourcing messages={messages} setMessages={setMessages}/>*/}
     </section>
   );
 };
