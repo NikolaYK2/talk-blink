@@ -4,7 +4,7 @@ import {v1} from "uuid";
 import {BASE_URL} from "@/common/instance/instance.ts";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
 import {Auth} from "@/features/messages/ui/3-websocket/ui/auth/ui/Auth.tsx";
-import {useProfile} from "@/features/messages/ui/profile/lib/useProfile.ts";
+import {useProfile} from "@/common/components/profile/lib/useProfile.ts";
 
 export type MessageType = {
   event: 'message' | 'connection',

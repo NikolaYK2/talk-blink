@@ -1,3 +1,8 @@
+/* reset */
+//a {
+//  all: unset;
+//}
+
 .header {
   flex: 1 1 30%;
   display: flex;
@@ -27,6 +32,7 @@
   .nav {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
 
@@ -47,6 +53,7 @@
       cursor: pointer;
       transition: background-color .3s ease 0s;
 
+
       &:hover, .isActive {
         background-color: var(--color-dark-900);
 
@@ -60,7 +67,9 @@
         transition: background-color .3s ease 0s;
       }
 
+
       > a {
+        display: flex;
         width: 100%;
         height: 100%;
         padding: 14.5px 15.6px;;
@@ -75,7 +84,89 @@
           }
         }
       }
+
     }
 
   }
 }
+.hoverRout {
+  display: flex;
+  padding: 4px 10px;
+  border: 1px solid var(--color-medium);
+  border-radius: var(--b-block);
+  background-color: var(--color-dark-900);
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+
+  .hoverText {
+    color: var(--color-light);
+  }
+  .hoverRoutArrow{
+    background-color: transparent;
+    fill:var(--color-dark-900)
+  }
+}
+
+.HoverCardContent[data-side='top'] {
+  animation-name: slideDownAndFade;
+}
+
+.HoverCardContent[data-side='right'] {
+  animation-name: slideLeftAndFade;
+}
+
+.HoverCardContent[data-side='bottom'] {
+  animation-name: slideUpAndFade;
+}
+
+.HoverCardContent[data-side='left'] {
+  animation-name: slideRightAndFade;
+}
+
+
+@keyframes slideUpAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  0% {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
