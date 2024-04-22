@@ -4,8 +4,8 @@ import '@/assets/styles/index.scss'
 import {PATH} from "@/common/constants/conts.ts";
 import App from "@/App.tsx";
 import {Chat} from "@/features/messages/ui/chat/Chat.tsx";
-import {Profile} from "@/common/components/profile/ui/Profile.tsx";
 import {ProfileProvider} from "@/common/components/profile/model/ProfileProvider.tsx";
+import {ProfileDetails} from "@/features/messages/ui/profileDetails/ProfileDetails.tsx";
 
 
 const router = createBrowserRouter([
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     path: PATH.ROUT_MAIN,
     element: <App/>,
     children: [
-      {path:PATH.ROUT_PROFILE, element: <Profile/>},
+      {path:PATH.ROUT_PROFILE, element: <ProfileDetails title={'profile'}/>},
       {path:PATH.ROUT_CHAT, element: <Chat/>},
     ]
   }
