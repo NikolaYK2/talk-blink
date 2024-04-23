@@ -1,20 +1,21 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  .title{
-    padding: 24px;
-    font-size: var(--f-s-h1);
-    text-transform: capitalize;
-  }
-  .profile{
+
+  .profile {
     display: flex;
     flex-direction: column;
+
+    > div:first-child {
+      width: 100px;
+      height: 100px;
+    }
   }
 }
 
-.details{
+.details {
   display: flex;
   width: 100%;
-  padding: 0 24px;
+  padding: 24px;
 }

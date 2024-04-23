@@ -32,7 +32,7 @@ export const ProfileDetails = ({title}: Props) => {
 
   return (
     <section className={s.container}>
-      <div className={s.title}>{title}</div>
+      <h2 className={'h2App'}>{title}</h2>
       <Profile className={s.profile}/>
       <section className={s.details}>
         <AccordionApp title={defaultValue?.title || ''} defaultValue>

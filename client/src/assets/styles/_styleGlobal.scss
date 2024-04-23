@@ -7,4 +7,10 @@
 
   //border block
   --b-block: 4px;
+
+  .h2App {
+    margin: 24px;
+    font-size: var(--f-s-h1);
+    text-transform: capitalize;
+  }
 }
