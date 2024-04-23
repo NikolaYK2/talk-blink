@@ -25,10 +25,10 @@ wss.on('connection', function connection(ws) {
         break
       }
       case 'connection': {
+        broadcastMessage(message);
         currentUser = message; // сохраняем текущего пользователя
         connections.push(currentUser); // сохраняем историю подключившихся пользователей
         ws.send(JSON.stringify(connections)); // отправляем историю
-        broadcastMessage(message);
         broadcastConnections();
         break
       }

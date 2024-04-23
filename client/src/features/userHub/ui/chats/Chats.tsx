@@ -4,14 +4,14 @@ type Props = {
   title: string
 }
 export const Chats = ({title}: Props) => {
-  const {profile} = useUserHub();
-  console.log(profile)
+  const {users} = useUserHub();
+  console.log(users)
 
   return (
     <section>
       <h2 className={'h2App'}>{title}</h2>
       <div>
-        {profile.map(el =>
+        {users.map(el =>
           <div key={el.id}>
             <div>{el.username}</div>
           </div>

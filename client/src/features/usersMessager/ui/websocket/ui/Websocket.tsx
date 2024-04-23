@@ -18,7 +18,7 @@ export const Websocket = () => {
 
   const {value: user, onChange: onChangeUser} = useInput('');
 
-  const {setProfile} = useUserHub();
+  const {setUsers, setProfile, profile} = useUserHub();
 
   const {setUsersMessages} = useUsersMessages();
 
@@ -58,13 +58,13 @@ export const Websocket = () => {
     socket.current.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (Array.isArray(message)) {
-        setProfile(message);
+        setUsers(message);
       } else {
         setUsersMessages((prevMessages: MessageType[]) => [...prevMessages, {
           ...message,
           isUser: message.username === user
         },]);
-        // setProfile((prevProfile: any) => [...prevProfile, {data: message.data, username: message.username}])
+        setProfile({...profile, username: user, data: time});
       }
     }
     socket.current.onclose = () => {
@@ -78,7 +78,6 @@ export const Websocket = () => {
         isUser: false
       }
       socket.current?.send(JSON.stringify(disconnectMessage));
-
     }
     socket.current.onerror = () => {
       console.log('error!!!')
