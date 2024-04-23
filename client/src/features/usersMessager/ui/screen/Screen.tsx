@@ -1,5 +1,5 @@
 import s from './Screen.module.scss'
-import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
+import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
 
 type Props = {
   messages: MessageType[]

@@ -3,8 +3,8 @@ import {useEffect} from "react";
 import {v1} from "uuid";
 import {BASE_URL} from "@/common/instance/instance.ts";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
-import {eventSourceApi} from "@/features/messages/ui/2-eventSource/api/eventSourceApi.ts";
-import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
+import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
+import {eventSourceApi} from "@/features/usersMessager/ui/eventSource/api/eventSourceApi.ts";
 
 type Props = {
   messages: MessageType[],

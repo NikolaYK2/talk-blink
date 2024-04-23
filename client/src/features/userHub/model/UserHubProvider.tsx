@@ -1,5 +1,5 @@
 import {createContext, ReactNode, useState} from "react";
-import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
+import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
 
 export type PostContextType = {
   profile: ProfileType,

@@ -1,9 +1,9 @@
 import {useInput} from "@/common/hooks/useInput.ts";
 import {useEffect} from "react";
 import {v1} from "uuid";
-import {longPulingApi} from "@/features/messages/ui/1-longPuling/api/longPulingApi.ts";
-import {MessageType} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
+import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
+import {longPulingApi} from "@/features/usersMessager/ui/longPuling/api/longPulingApi.ts";
 
 type Props = {
   messages: MessageType[],

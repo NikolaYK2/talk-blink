@@ -1,14 +1,14 @@
 import s from './Messages.module.scss'
 import {useState} from "react";
-import {Screen} from "@/features/messages/ui/screen/Screen.tsx";
-import {MessageType, Websocket} from "@/features/messages/ui/3-websocket/ui/Websocket.tsx";
 import {Profile} from "@/common/components/profile/ui/Profile.tsx";
+import {MessageType, Websocket} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
+import {Screen} from "@/features/usersMessager/ui/screen/Screen.tsx";
 
 
 export const Messages = () => {
   const [messages, setMessages] = useState<MessageType[]>([]);
 
-  console.log(messages  )
+  console.log(messages)
   return (
     <section className={s.containerMessages}>
       <Profile/>

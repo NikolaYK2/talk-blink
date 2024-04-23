@@ -1,7 +1,7 @@
 import {Header} from "@/features/1-header/Header.tsx";
 import s from './App.module.scss'
-import {Messages} from "@/features/messages/ui/Messages.tsx";
 import {UserHub} from "@/features/userHub/ui/UserHub.tsx";
+import {Messages} from "@/features/usersMessager/ui/Messages.tsx";
 
 function App() {
 
