@@ -5,31 +5,24 @@ import {BASE_URL} from "@/common/instance/instance.ts";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
 import {useUserHub} from "@/features/userHub/lib/useUserHub.ts";
 import {Auth} from "@/features/usersMessager/ui/websocket/ui/auth/Auth.tsx";
+import {MessageType} from "@/features/usersMessager/model/UserMessagesProvider.tsx";
+import {useUsersMessages} from "@/features/usersMessager/lib/useUsersMessages.ts";
 
-export type MessageType = {
-  event: 'message' | 'connection',
-  message: string,
-  id: string,
-  data: string,
-  username: string,
-  isUser: boolean,
-}
 const data = new Date();
 const time = data.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
 
-type Props = {
-  messages: MessageType[],
-  setMessages: (messages: any) => void,
-}
-export const Websocket = ({setMessages}: Props) => {
+export const Websocket = () => {
   const [connected, setConnected] = useState(false);
 
   const {setValue, value, onChange} = useInput('');
+
   const {value: user, onChange: onChangeUser} = useInput('');
 
-  const socket = useRef<WebSocket | null>(null);
-
   const {setProfile} = useUserHub();
+
+  const {setUsersMessages} = useUsersMessages();
+
+  const socket = useRef<WebSocket | null>(null);
 
   const addMessageHandler = async () => {
 
@@ -64,11 +57,28 @@ export const Websocket = ({setMessages}: Props) => {
     }
     socket.current.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      setMessages((prevMessages: MessageType[]) => [...prevMessages, {...message, isUser: message.username === user},]);
-      setProfile({data: message.data, username: message.username})
+      if (Array.isArray(message)) {
+        setProfile(message);
+      } else {
+        setUsersMessages((prevMessages: MessageType[]) => [...prevMessages, {
+          ...message,
+          isUser: message.username === user
+        },]);
+        // setProfile((prevProfile: any) => [...prevProfile, {data: message.data, username: message.username}])
+      }
     }
     socket.current.onclose = () => {
-      console.log('close')
+      console.log('close');
+      const disconnectMessage: MessageType = {
+        event: 'disconnect',
+        username: user,
+        id: v1(),
+        data: time,
+        message: '',
+        isUser: false
+      }
+      socket.current?.send(JSON.stringify(disconnectMessage));
+
     }
     socket.current.onerror = () => {
       console.log('error!!!')

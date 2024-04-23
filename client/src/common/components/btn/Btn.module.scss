@@ -11,6 +11,8 @@
   color: var(--color-light);
   font-size: var(--f-s-h2);
   text-transform: uppercase;
+  cursor: pointer;
+
 
   &:hover {
     background-color: var(--color-medium-active);

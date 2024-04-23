@@ -3,15 +3,15 @@ import {useEffect} from "react";
 import {v1} from "uuid";
 import {BASE_URL} from "@/common/instance/instance.ts";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
-import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
 import {eventSourceApi} from "@/features/usersMessager/ui/eventSource/api/eventSourceApi.ts";
+import {useUsersMessages} from "@/features/usersMessager/lib/useUsersMessages.ts";
+import {MessageType} from "@/features/usersMessager/model/UserMessagesProvider.tsx";
 
-type Props = {
-  messages: MessageType[],
-  setMessages: (messages: any) => void
-}
-export const EventSourcing = ({setMessages}: Props) => {
+export const EventSourcing = () => {
   const {setValue, value, onChange} = useInput('')
+  const {value: user} = useInput('');
+
+  const {setUsersMessages} = useUsersMessages();
   const hasValue = value !== '';
 
   const addMessageHandler = async () => {
@@ -26,7 +26,8 @@ export const EventSourcing = ({setMessages}: Props) => {
     eventSource.onmessage = function (event) {//есть слушатели для перехватов ошибок сообщений и так далее
       const message = JSON.parse(event.data);
       const date = new Date();
-      setMessages((prevMessages: MessageType[]) => [...prevMessages, {date, ...message, isUser: false}]);
+      setUsersMessages((prevMessages: MessageType[]) =>
+        [...prevMessages, {date, ...message, isUser: message.username === user}]);
       setValue('');
     }
   }

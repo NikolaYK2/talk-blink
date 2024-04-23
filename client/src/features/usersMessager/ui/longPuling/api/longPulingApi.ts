@@ -9,7 +9,7 @@ type MessageType = {
 type ResponseType = {
   id: number,
   message: string,
-  user:boolean,
+  isUser:boolean,
 }
 export const longPulingApi = {
   addMessage(message: MessageType) {

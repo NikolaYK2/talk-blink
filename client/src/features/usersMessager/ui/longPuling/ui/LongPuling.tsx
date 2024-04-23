@@ -2,15 +2,15 @@ import {useInput} from "@/common/hooks/useInput.ts";
 import {useEffect} from "react";
 import {v1} from "uuid";
 import {ChatInput} from "@/common/components/ChatImput/ChatInput.tsx";
-import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
 import {longPulingApi} from "@/features/usersMessager/ui/longPuling/api/longPulingApi.ts";
+import {useUsersMessages} from "@/features/usersMessager/lib/useUsersMessages.ts";
+import {MessageType} from "@/features/usersMessager/model/UserMessagesProvider.tsx";
 
-type Props = {
-  messages: MessageType[],
-  setMessages: (messages: any) => void
-}
-export const LongPuling = ({setMessages}: Props) => {
-  const {setValue, value, onChange} = useInput('')
+export const LongPuling = () => {
+  const {setValue, value, onChange} = useInput('');
+  const {value: user} = useInput('');
+  const {setUsersMessages} = useUsersMessages();
+
   const hasValue = value !== '';
   const addMessageHandler = async () => {
 
@@ -23,9 +23,17 @@ export const LongPuling = ({setMessages}: Props) => {
   const subscribe = async () => {
     try {
       const res = await longPulingApi.getMessage();
-      const data = new Date();
+      const data = new Date().toLocaleTimeString();
 
-      setMessages((prevMessages: MessageType[]) => [...prevMessages, {data, ...res.data, isUser: false}]);
+      setUsersMessages((prevMessages: MessageType[]) =>
+        [...prevMessages, {
+          data, ...res.data,
+          isUser: res.data.message === user,
+          username: '',
+          message: '',
+          event: 'message',
+          id: '1'
+        }]);
       setValue('')
       //отправляем запрос и ждем сообщения
       await subscribe();

@@ -6,6 +6,7 @@ import App from "@/App.tsx";
 import {ProfileDetails} from "@/features/userHub/ui/profileDetails/ui/ProfileDetails.tsx";
 import {Chats} from "@/features/userHub/ui/chats/Chats.tsx";
 import {UserHubProvider} from "@/features/userHub/model/UserHubProvider.tsx";
+import {UserMessagesProvider} from "@/features/usersMessager/model/UserMessagesProvider.tsx";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <UserHubProvider>
-    <RouterProvider router={router}/>
+    <UserMessagesProvider>
+      <RouterProvider router={router}/>
+    </UserMessagesProvider>
   </UserHubProvider>,
 )

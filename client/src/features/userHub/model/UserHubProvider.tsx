@@ -1,11 +1,11 @@
-import {createContext, ReactNode, useState} from "react";
-import {MessageType} from "@/features/usersMessager/ui/websocket/ui/Websocket.tsx";
+import {createContext, Dispatch, ReactNode, SetStateAction, useState} from "react";
+import {MessageType} from "@/features/usersMessager/model/UserMessagesProvider.tsx";
 
 export type PostContextType = {
-  profile: ProfileType,
-  setProfile: (profile: ProfileType) => void,
+  profile: ProfileType[],
+  setProfile: Dispatch<SetStateAction<ProfileType[]>>,
 }
-type ProfileType = Pick<MessageType, 'data' | 'username'>;
+type ProfileType = MessageType;
 export const UserHubContext = createContext<PostContextType | null>(null);
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 }
 export const UserHubProvider = ({children}: Props) => {
 
-  const [profile, setProfile] = useState<ProfileType>({} as ProfileType);
+  const [profile, setProfile] = useState<ProfileType[]>([]);
 
   return (
     <UserHubContext.Provider value={{profile, setProfile}}>
