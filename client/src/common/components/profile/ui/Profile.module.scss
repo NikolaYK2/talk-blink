@@ -20,6 +20,8 @@
     }
 
     .name{
+      display: flex;
+      align-items: center;
       margin: 0 0 0 3%;
     }
     .online{
@@ -27,7 +29,7 @@
       height: 6px;
       border-radius: 50%;
       background: var(--color-medium-active);
-      margin: 1%;
+      margin: 10px;
     }
   }
 }

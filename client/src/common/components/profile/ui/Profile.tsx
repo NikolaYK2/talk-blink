@@ -15,8 +15,10 @@ export const Profile = ({className}: Props) => {
         <div className={s.avatar}>
           <IconSvg name={'ava'}/>
         </div>
-        <div className={s.name}>{profile.username}</div>
-        {profile.username && <div className={s.online}></div>}
+        <div className={s.name}>
+          {profile.username}
+          {profile.username && <div className={s.online}></div>}
+        </div>
       </div>
     </div>
   );

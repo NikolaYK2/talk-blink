@@ -9,7 +9,7 @@ import {About} from "@/features/messages/ui/profileDetails/about/About.tsx";
 import {Profile} from "@/common/components/profile/ui/Profile.tsx";
 import {IconSvg} from "@/common/components/IconSVG.tsx";
 import {Other} from "@/features/messages/ui/profileDetails/other/Other.tsx";
-import {memo, ReactElement} from "react";
+import {ReactElement} from "react";
 
 type IconType = 'profile' | '' | 'files'
 type DetailsType = {
@@ -21,7 +21,7 @@ type DetailsType = {
 type Props = {
   title: string
 }
-export const ProfileDetails = memo(({title}: Props) => {
+export const ProfileDetails = ({title}: Props) => {
 
   const details: DetailsType[] = [
     {defaultOpen: true, title: 'about', data: <About/>, icon: 'profile'},
@@ -33,7 +33,7 @@ export const ProfileDetails = memo(({title}: Props) => {
   return (
     <section className={s.container}>
       <div className={s.title}>{title}</div>
-      <Profile/>
+      <Profile className={s.profile}/>
       <section className={s.details}>
         <AccordionApp title={defaultValue?.title || ''} defaultValue>
           {details.map((el) => <div key={el.title}>
@@ -52,4 +52,4 @@ export const ProfileDetails = memo(({title}: Props) => {
       </section>
     </section>
   );
-});
+};

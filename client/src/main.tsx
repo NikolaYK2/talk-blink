@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     path: PATH.ROUT_MAIN,
     element: <App/>,
     children: [
-      {path:PATH.ROUT_PROFILE, element: <ProfileDetails title={'profile'}/>},
+      {path:PATH.ROUT_PROFILE, element: <ProfileDetails title={'my profile'}/>},
       {path:PATH.ROUT_CHAT, element: <Chat/>},
     ]
   }
