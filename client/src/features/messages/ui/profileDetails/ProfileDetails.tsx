@@ -9,7 +9,7 @@ import {About} from "@/features/messages/ui/profileDetails/about/About.tsx";
 import {Profile} from "@/common/components/profile/ui/Profile.tsx";
 import {IconSvg} from "@/common/components/IconSVG.tsx";
 import {Other} from "@/features/messages/ui/profileDetails/other/Other.tsx";
-import {ReactElement} from "react";
+import {memo, ReactElement} from "react";
 
 type IconType = 'profile' | '' | 'files'
 type DetailsType = {
@@ -21,7 +21,7 @@ type DetailsType = {
 type Props = {
   title: string
 }
-export const ProfileDetails = ({title}: Props) => {
+export const ProfileDetails = memo(({title}: Props) => {
 
   const details: DetailsType[] = [
     {defaultOpen: true, title: 'about', data: <About/>, icon: 'profile'},
@@ -52,4 +52,4 @@ export const ProfileDetails = ({title}: Props) => {
       </section>
     </section>
   );
-};
+});

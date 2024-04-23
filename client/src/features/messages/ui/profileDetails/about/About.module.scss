@@ -1,0 +1,14 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 20px;
+  font-size: var(--f-s-default);
+  &:last-child{
+    margin: 0;
+  }
+  >span{
+    color: var(--color-dark-100);
+    margin: 0 0 5px;
+    text-transform: capitalize;
+  }
+}

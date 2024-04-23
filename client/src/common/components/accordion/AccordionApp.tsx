@@ -19,7 +19,7 @@ export const AccordionApp = ({defaultValue = false, children, title}: AccordionA
 type AccordionItemType = Omit<AccordionAppType, 'defaultValue'>
 export const AccordionItem = ({title, children}: AccordionItemType) => {
   return (
-    <Accordion.Item className={s.blockAccordion} value={title}>
+    <Accordion.Item className={s.accordionItem} value={title}>
       {children}
     </Accordion.Item>
   )
