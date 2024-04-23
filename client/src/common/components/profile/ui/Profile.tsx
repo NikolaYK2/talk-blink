@@ -1,13 +1,13 @@
 import s from './Profile.module.scss'
 import {IconSvg} from "@/common/components/IconSVG.tsx";
-import {useProfile} from "@/common/components/profile/lib/useProfile.ts";
+import {useUserHub} from "@/features/userHub/lib/useUserHub.ts";
 
 type Props = {
   className?: string,
 }
 export const Profile = ({className}: Props) => {
 
-  const {profile} = useProfile();
+  const {profile} = useUserHub();
 
   return (
     <div className={`${s.containerProfile}`}>

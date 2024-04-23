@@ -1,9 +1,9 @@
-import {useProfile} from "@/common/components/profile/lib/useProfile.ts";
 import s from './About.module.scss'
+import {useUserHub} from "@/features/userHub/lib/useUserHub.ts";
 
 export const About = () => {
 
-  const {profile} = useProfile();
+  const {profile} = useUserHub();
 
   const about = [
     {label: 'name', name: profile.username,},

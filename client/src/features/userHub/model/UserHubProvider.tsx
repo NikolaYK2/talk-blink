@@ -6,18 +6,18 @@ export type PostContextType = {
   setProfile: (profile: ProfileType) => void,
 }
 type ProfileType = Pick<MessageType, 'data' | 'username'>;
-export const ProfileContext = createContext<PostContextType | null>(null);
+export const UserHubContext = createContext<PostContextType | null>(null);
 
 type Props = {
   children: ReactNode
 }
-export const ProfileProvider = ({children}: Props) => {
+export const UserHubProvider = ({children}: Props) => {
 
   const [profile, setProfile] = useState<ProfileType>({} as ProfileType);
 
   return (
-    <ProfileContext.Provider value={{profile, setProfile}}>
+    <UserHubContext.Provider value={{profile, setProfile}}>
       {children}
-    </ProfileContext.Provider>
+    </UserHubContext.Provider>
   );
 };

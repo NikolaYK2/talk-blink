@@ -8,6 +8,7 @@ import {Profile} from "@/common/components/profile/ui/Profile.tsx";
 export const Messages = () => {
   const [messages, setMessages] = useState<MessageType[]>([]);
 
+  console.log(messages  )
   return (
     <section className={s.containerMessages}>
       <Profile/>

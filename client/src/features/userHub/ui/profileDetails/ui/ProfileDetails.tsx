@@ -5,11 +5,11 @@ import {
   AccordionItem,
   AccordionTrigger
 } from "@/common/components/accordion/AccordionApp.tsx";
-import {About} from "@/features/messages/ui/profileDetails/about/About.tsx";
 import {Profile} from "@/common/components/profile/ui/Profile.tsx";
 import {IconSvg} from "@/common/components/IconSVG.tsx";
-import {Other} from "@/features/messages/ui/profileDetails/other/Other.tsx";
 import {ReactElement} from "react";
+import {About} from "@/features/userHub/ui/profileDetails/ui/about/About.tsx";
+import {Other} from "@/features/userHub/ui/profileDetails/ui/other/Other.tsx";
 
 type IconType = 'profile' | '' | 'files'
 type DetailsType = {
