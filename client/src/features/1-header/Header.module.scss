@@ -16,6 +16,8 @@
 
   @media (max-width: pxToRem($viewportMobile)) {
     max-width: 100%;
+    height: 65px;
+    flex-direction: row;
   }
 
   .logo {
@@ -42,6 +44,9 @@
       justify-content: center;
       align-items: center;
       border-radius: var(--b-block);
+      @media (max-width: pxToRem($viewportMobile)) {
+        flex-direction: row;
+      }
     }
 
     .rout {
@@ -89,6 +94,7 @@
 
   }
 }
+
 .hoverRout {
   display: flex;
   padding: 4px 10px;
@@ -103,9 +109,10 @@
   .hoverText {
     color: var(--color-light);
   }
-  .hoverRoutArrow{
+
+  .hoverRoutArrow {
     background-color: transparent;
-    fill:var(--color-dark-900)
+    fill: var(--color-dark-900)
   }
 }
 
