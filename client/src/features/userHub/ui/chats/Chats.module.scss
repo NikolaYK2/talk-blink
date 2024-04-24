@@ -1,0 +1,36 @@
+.container {
+}
+
+.block {
+  padding: var(--p-block);
+
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 10px 0 0;
+
+    > svg path {
+      fill: var(--color-dark-100);
+    }
+  }
+
+  .name {
+    font-size: var(--f-s-default);
+    text-transform: capitalize;
+  }
+
+  .data {
+    margin: 0 0 0 auto;
+    font-size: var(--f-s-small);
+    color: var(--color-dark-100);
+  }
+}
