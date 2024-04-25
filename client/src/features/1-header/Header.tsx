@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <header className={s.header}>
-      <Link to={PATH.ROUT_MAIN} className={s.logo}>
+      <Link to={PATH.ROUT_CHAT} className={s.logo}>
         <IconSvg name={"logo"}/>
       </Link>
       <nav className={s.nav}>

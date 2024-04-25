@@ -5,6 +5,7 @@
   justify-content: space-between;
   height: 100vh;
   font-size: var(--f-s-h2);
+  background-color: var(--color-dark-900);
   @media (max-width: pxToRem($viewportMobile)) {
     //height: calc(100vh - 39px);
     //display: none;
