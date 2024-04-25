@@ -29,6 +29,10 @@
     > svg path, circle, {
       stroke: var(--color-medium);
     }
+    @media (max-width: pxToRem($viewportMobile)) {
+      display: none;
+    }
+
   }
 
   .nav {
